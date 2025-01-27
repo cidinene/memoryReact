@@ -110,7 +110,7 @@ function Tablero(){
        <>{msgWin.length>1 && <Mensaje texto={msgWin} handler={init}></Mensaje>}
         <div className='container'>
              <div className='row'>
-                &nbsp;
+                &nbsp;Cards Number : {cardList.length}
             </div>
             <div className='row'>
                 {indexCards.map((value,index) => <Card key={cardList[value].id} indice={index} data={cardList[value]} handler={flip}></Card>) }
