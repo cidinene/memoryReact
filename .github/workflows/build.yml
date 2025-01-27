@@ -19,5 +19,8 @@ jobs:
           npm run test-coverage
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
+        with:
+          args:>
+            -Dsonar.verbose=true      
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
