@@ -1,14 +1,11 @@
 name: Deploy PWA
-
 on:
   push:
     branches:
       - master 
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       # Paso 1: Checkout del repositorio
       - name: Checkout code
