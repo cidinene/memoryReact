@@ -20,6 +20,8 @@ jobs:
       # Paso 3: Instalar dependencias
       - name: Install dependencies
         run: npm install
+        
+      # Pre-Paso 4: Deshabilitar  warnings
       - name: Disable CI checks
         run: echo "CI=false" >> $GITHUB_ENV
 
