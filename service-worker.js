@@ -1,14 +1,16 @@
-const CACHE_NAME = 'memory_app_cache-v1';
+const CACHE_NAME = 'mi-app-cache-v1';
+const BASE_URL = '/memoryReact';  // Añade la subruta aquí
+
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/static/js/main.chunk.js',
-  '/static/js/2.chunk.js',
-  '/static/js/bundle.js',
-  '/static/css/main.chunk.css',
-  '/manifest.json',
-  '/icon-192x192.png',
-  '/icon-512x512.png'
+  `${BASE_URL}/`,
+  `${BASE_URL}/index.html`,
+  `${BASE_URL}/static/js/main.chunk.js`,
+  `${BASE_URL}/static/js/2.chunk.js`,
+  `${BASE_URL}/static/js/bundle.js`,
+  `${BASE_URL}/static/css/main.chunk.css`,
+  `${BASE_URL}/manifest.json`,
+  `${BASE_URL}/icon-192x192.png`,
+  `${BASE_URL}/icon-512x512.png`
 ];
 
 self.addEventListener('install', (event) => {
