@@ -1,27 +1,36 @@
-name: Build
+name: Deploy PWA
+
 on:
   push:
     branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+      - main 
+
 jobs:
-  sonarqube:
-    name: SonarQube
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      # Paso 1: Checkout del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: 'lanzamiento test unitario'          
-        run: |
-          npm i
-          npm run test-coverage
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v4
+          node-version: 18  # Usa la versión de Node.js que necesites
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: npm install
+
+      # Paso 4: Construir la aplicación
+      - name: Build application
+        run: npm run build
+
+      # Paso 5: Desplegar en GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          args: >
-            -Dsonar.organization=cidinene
-            -Dsonar.verbose=true    
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build  # La carpeta que contiene los archivos construidos
