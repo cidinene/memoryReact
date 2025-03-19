@@ -1,5 +1,6 @@
 {
-  "name": "memory",
+  "name": "memory React",
+  "homepage":"https://cidinene.github.io/memoryReact",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
